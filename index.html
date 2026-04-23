@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Cormorant+Garamond&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Madhu ❤️ Madhavi</title>
@@ -28,7 +29,8 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4); /* dark overlay */
+  background: rgba(0,0,0,0.5);
+
 }
 @keyframes zoomBg {
   from { transform: scale(1); }
@@ -136,6 +138,112 @@ input {
   z-index: 1;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
 }
+.countdown-box {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.time {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 10px;
+  width: 80px;
+  text-align: center;
+  border: 1px solid gold;
+
+}
+
+.time span {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.time p {
+  margin-top: 5px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.invite-card {
+  background: linear-gradient(135deg, #f8f3e8, #efe6d8);
+  color: #6b1d1d;
+  padding: 40px 20px;
+  max-width: 500px;
+  margin: auto;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow:0 10px 40px rgba(0,0,0,0.3),
+            0 0 20px rgba(212,175,55,0.2);
+border: 2px solid #d4af37;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Top text */
+.top-text {
+  letter-spacing: 3px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.divider span {
+  width: 40px;
+  height: 1px;
+  background: gold;
+  display: inline-block;
+}
+
+/* Names */
+.names {
+  font-size: 48px;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(45deg, #d4af37, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Invite line */
+.invite-line {
+  letter-spacing: 2px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Date box */
+.date-box {
+  border: 2px solid gold;
+  padding: 12px 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Footer */
+.footer-text {
+  font-style: italic;
+  margin-top: 20px;
+}
+
+#main {
+  opacity: 0;
+  transition: 1s;
+}
+
+#main.show {
+  opacity: 1;
+}
+
 </style>
 </head>
 
@@ -151,19 +259,59 @@ input {
   <button onclick="enterSite()">Open Invitation</button>
 </section>
 
+
+
 <!-- Main Content -->
 <div id="main" style="display:none;">
-
 <section class="fade">
-  <h1>Madhu ❤️ Madhavi</h1>
-  <h2>13th May 2026</h2>
-  <h3>09:24 AM</h3>
+  <div class="invite-card">
+
+    <p class="top-text">TOGETHER WITH THEIR FAMILIES</p>
+
+    <div class="divider">
+      <span></span> ❤️ <span></span>
+    </div>
+
+    <h1 class="names">
+      Madhu <br>&<br> Madhavi
+    </h1>
+
+    <!-- <p class="invite-line">
+      REQUEST THE PLEASURE OF YOUR COMPANY
+    </p> -->
+
+    <div class="date-box">
+      WEDNESDAY, MAY 13, 2026 · 09:24 AM
+    </div>
+
+    <p class="footer-text">
+      Dear Guest, your presence would mean the world to us
+    </p>
+
 </section>
 
 <section class="fade">
-  <div class="card">
-    <h3>⏳ Countdown</h3>
-    <p id="countdown"></p>
+  <section class="fade">
+  <h2 style="letter-spacing:3px; opacity:0.8;">SAVE THE DATE</h2>
+  <h1 style="margin-bottom:30px;">Counting Down To Forever</h1>
+
+  <div class="countdown-box">
+    <div class="time">
+      <span id="days">00</span>
+      <p>DAYS</p>
+    </div>
+    <div class="time">
+      <span id="hours">00</span>
+      <p>HOURS</p>
+    </div>
+    <div class="time">
+      <span id="minutes">00</span>
+      <p>MINUTES</p>
+    </div>
+    <div class="time">
+      <span id="seconds">00</span>
+      <p>SECONDS</p>
+    </div>
   </div>
 </section>
 
@@ -181,7 +329,7 @@ input {
 
   <div class="card">
     <h3>💍 Wedding</h3>
-    <p>13th May - 09:24 AM</p>
+    <p>13th May</p>
   </div>
 </section>
 
@@ -251,12 +399,14 @@ if (guest) {
 // Enter
 function enterSite() {
   document.getElementById("welcome").style.display = "none";
-  document.getElementById("main").style.display = "block";
-let music = document.getElementById("music");
-music.muted = false;
-music.play().catch(()=>{});
-}
 
+  let main = document.getElementById("main");
+  main.style.display = "block";
+
+  setTimeout(() => {
+    main.classList.add("show");
+  }, 100);
+}
 // Countdown
 const weddingDate = new Date("May 13, 2026 09:24:00").getTime();
 setInterval(()=>{
@@ -267,8 +417,11 @@ setInterval(()=>{
   const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
   const m = Math.floor((diff%(1000*60*60))/(1000*60));
 
-  document.getElementById("countdown").innerText =
-    d+" Days "+h+" Hrs "+m+" Min";
+  document.getElementById("days").innerText = d;
+  document.getElementById("hours").innerText = h;
+  document.getElementById("minutes").innerText = m;
+  document.getElementById("seconds").innerText =
+  Math.floor((diff%(1000*60))/1000);
 },1000);
 
 // RSVP
