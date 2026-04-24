@@ -147,31 +147,25 @@ input {
 }
 
 .countdown-box {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  max-width: 260px;
-  margin: auto;
-}
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
-.countdown-section h2 {
-  margin-bottom: 15px;
+  gap: 14px; 
+  padding: 0 10px; 
+
+  max-width: 260px;
+  margin: 0 auto;
 }
 
 .time {
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(10px);
-  padding: 20px;
+  padding: 18px;
   border-radius: 10px;
-
-  width: calc(50% - 10px);
-  max-width: 110px;
-
   text-align: center;
   border: 1px solid gold;
+  width: auto;
 }
-
 .time span {
   font-size: 32px;
   font-weight: bold;
