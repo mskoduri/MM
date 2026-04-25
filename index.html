@@ -23,7 +23,7 @@ body {
   filter: brightness(1.05) contrast(1.1);
   background: url('IMG_20260424_175341.jpeg') no-repeat right center;
   background-size: cover;
-  animation: zoomBg 20s infinite alternate;
+  animation: zoomBg 30s ease-in-out infinite alternate;
   z-index: -1;
   width: 100vw;
   height: 100vh;
@@ -67,8 +67,7 @@ padding: 40px 10px;
 
 
 .card {
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.2);
   padding: 25px;
   border-radius: 20px;
   max-width: 400px;
@@ -106,8 +105,8 @@ button:hover {
 
 .fade {
   opacity: 0;
-  transform: translateY(60px);
-  transition: all 1.2s ease;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
 }
 
 .fade.show {
@@ -164,8 +163,7 @@ input {
 }
 
 .time {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.2);
   padding: 18px;
   border-radius: 10px;
   text-align: center;
@@ -184,9 +182,9 @@ input {
 }
 
 .time, .card {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .invite-card {
@@ -589,6 +587,15 @@ img {
   height: auto;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+section {
+  scroll-snap-align: start;
+}
+
 </style>
 </head>
 
@@ -817,13 +824,14 @@ function rsvp() {
     name ? "Thank you "+name+" 🎉" : "Enter your name";
 }
 
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if(entry.isIntersecting){
+    if (entry.isIntersecting) {
       entry.target.classList.add('show');
     }
   });
+}, {
+  threshold: 0.2
 });
 
 document.querySelectorAll('.fade').forEach(el => observer.observe(el));
