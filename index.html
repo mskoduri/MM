@@ -20,13 +20,9 @@ body {
 .bg {
   position: fixed;
   inset: 0;
-
   background: url('IMG_20260424_175341.jpeg') no-repeat right center;
   background-size: cover;
-
   filter: brightness(1.05) contrast(1.1);
-  animation: zoomBg 40s linear infinite alternate;
-
   z-index: -1;
   pointer-events: none;
 }
@@ -47,11 +43,6 @@ body {
   .bg {
     background-position: 75% center;
   }
-}
-
-@keyframes zoomBg {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
 }
 
 section {
