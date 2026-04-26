@@ -89,8 +89,7 @@ button {
   padding: 12px 25px;
   border-radius: 30px;
   border: none;
-
-  background: none;
+  background: beige;
   color: #ff4d6d;
   cursor: pointer;
   z-index: 1;
@@ -824,8 +823,18 @@ body {
   <div class="card">
     <h3>💌 RSVP</h3>
     <input id="name" placeholder="Your Name"><br><br>
+
+<select id="attending">
+  <option value="">Please select</option>
+  <option value="Yes">Will Attend 😊</option>
+  <option value="No">Not Attending 😔</option>
+</select><br><br>
+
+<textarea id="comment" placeholder="Message" rows="3"></textarea><br><br>
+
 <button onclick="rsvp()">Confirm Your Presence 💖</button>
-    <p id="msg"></p>
+
+<p id="msg"></p>
   </div>
 </section>
 
@@ -878,9 +887,21 @@ setInterval(()=>{
 
 function rsvp() {
   let name = document.getElementById("name").value;
+  let attending = document.getElementById("attending").value;
+  let comment = document.getElementById("comment").value;
 
   if (!name) {
     alert("Please enter your name");
+    return;
+  }
+
+  if (!attending) {
+    alert("Please select if you will attend");
+    return;
+  }
+
+  if (!comment) {
+    alert("Please enter your message");
     return;
   }
 
@@ -891,8 +912,9 @@ function rsvp() {
       "Content-Type": "application/x-www-form-urlencoded"
     },
     body:
-      "entry.1906302132=" + encodeURIComponent(name) +   
-      "&entry.1850440765=Yes"                            
+      "entry.1906302132=" + encodeURIComponent(name) +
+      "&entry.1850440765=" + encodeURIComponent(attending) +
+      "&entry.829132535=" + encodeURIComponent(comment)
   });
 
   document.getElementById("msg").innerText =
