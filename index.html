@@ -605,12 +605,12 @@ body {
   margin: 16px auto;  
   position: relative;
   top: -2.5em;
-  filter: brightness(1.05) contrast(1.2) saturate(0.8)
+  /* filter: brightness(1.05) contrast(1.2) saturate(0.8)
           drop-shadow(0 0 4px rgba(212,175,55,0.7))
-          drop-shadow(0 0 10px rgba(139,105,20,0.5));
+          drop-shadow(0 0 10px rgba(139,105,20,0.5)); */
 }
 
-.OpenInvitation {
+.knot {
   transform: scale(1.2); 
   transform-origin: center;
   display: block;
@@ -624,25 +624,22 @@ body {
   cursor: pointer;
 }
 
-/* Envelope image */
+
 .open_invite {
   width: 150px;
   height: auto;
   display: block;
 }
 
-/* TEXT ON TOP OF ENVELOPE */
 .invite-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   color: #0c0103;
-  font-size: 16px;
+  /* font-size: 16px; */
   font-weight: 500;
-
-  pointer-events: none; /* 🔥 important */
+  pointer-events: none; 
 }
 
 </style>
@@ -656,10 +653,10 @@ body {
   <div class="welcome-content">
     <img src="Ganesh.png" class="welcome-image">
     <img src="MM.png"  class="names-img" alt="Madhu Madhavi"> 
-  <img src="20260426_190249.png" class="invite-text-img">
+  <img src="20260426_203029.png" class="invite-text-img">
     <button onclick="enterSite()" class="invite-btn"> <img src="Picsart_26-04-26_20-19-04-859.png" class="open_invite">
       <span class="invite-text">Open Invitation</span> </button>
-    <img src="Picsart_26-04-26_19-44-44-981.png" class="OpenInvitation"></img>
+    <img src="Picsart_26-04-26_19-44-44-981.png" class="knot"></img>
   </div>
 
 </section>
