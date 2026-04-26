@@ -824,7 +824,7 @@ body {
   <div class="card">
     <h3>💌 RSVP</h3>
     <input id="name" placeholder="Your Name"><br><br>
-    <button onclick="rsvp()">Submit</button>
+<button onclick="rsvp()">Confirm Your Presence 💖</button>
     <p id="msg"></p>
   </div>
 </section>
@@ -878,8 +878,25 @@ setInterval(()=>{
 
 function rsvp() {
   let name = document.getElementById("name").value;
+
+  if (!name) {
+    alert("Please enter your name");
+    return;
+  }
+
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLSe2UopGB2apWX73iOg-tnA2E4q8xZ_IXDUsRCCciOMnf0UEBw/formResponse", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body:
+      "entry.1906302132=" + encodeURIComponent(name) +   
+      "&entry.1850440765=Yes"                            
+  });
+
   document.getElementById("msg").innerText =
-    name ? "Thank you "+name+" 🎉" : "Enter your name";
+    "Thank you " + name + " 💖";
 }
 
 const observer = new IntersectionObserver(entries => {
