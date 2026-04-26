@@ -939,13 +939,20 @@ function scrollDown() {
   });
 }
 
-document.addEventListener("click", function (e) {
+
+document.addEventListener("touchstart", () => {}, { passive: true });
+
+document.addEventListener('touchmove', function() {}, { passive: true });
+
+document.getElementById("main").addEventListener("click", function (e) {
   const music = document.getElementById("music");
 
   if (
     e.target.closest("button") ||
     e.target.closest("a") ||
-    e.target.closest("input")
+    e.target.closest("input") ||
+    e.target.closest("select") ||
+    e.target.closest("textarea")
   ) {
     return;
   }
@@ -956,10 +963,6 @@ document.addEventListener("click", function (e) {
     music.pause();
   }
 });
-
-document.addEventListener("touchstart", () => {}, { passive: true });
-
-document.addEventListener('touchmove', function() {}, { passive: true });
 
 </script>
 
