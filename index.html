@@ -660,25 +660,33 @@ body {
   top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40px;
+  width: 50px;
   height: 50px;
-  transition: transform 0.2s ease;
-  animation: glow 2s infinite;
+  z-index: 10;
 }
 
-@keyframes glow {
-  0%,100% { filter: drop-shadow(0 0 3px gold); }
-  50% { filter: drop-shadow(0 0 10px gold); }
-}
+
 
 .invite-btn:active .seal-wrapper {
   transform: translate(-50%, -50%) scale(0.9);
 }
 
 .seal-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
+  /* Snappy transition for the break */
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s;
+}
+
+.seal-left {
+  clip-path: polygon(0% 0%, 52% 0%, 42% 25%, 52% 50%, 42% 75%, 52% 100%, 0% 100%);
+}
+
+.seal-right {
+  clip-path: polygon(52% 0%, 100% 0%, 100% 100%, 52% 100%, 42% 75%, 52% 50%, 42% 25%);
 }
 
 .seal-text {
@@ -686,11 +694,25 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 7px;
+  font-size: 8px;
   font-weight: bold;
-  letter-spacing: 1px;
   color: #3b1d03;
-  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 11;
+}
+
+.envelope-wrapper.open .seal-left {
+  transform: translateX(-35px) translateY(-10px) rotate(-20deg);
+  opacity: 0;
+}
+
+.envelope-wrapper.open .seal-right {
+  transform: translateX(35px) translateY(5px) rotate(20deg);
+  opacity: 0;
+}
+
+.envelope-wrapper.open .seal-text {
+  opacity: 0;
 }
 
 .envelope-wrapper.open .seal-wrapper {
@@ -700,8 +722,7 @@ body {
 }
 
 .envelope-wrapper.open .open_invite {
-  animation: openShake 0.4s ease;
-  transform: rotateX(35deg) scale(1.05);
+  transform: scale(1.1) rotateX(25deg);
 }
 
 @keyframes openShake {
@@ -740,10 +761,11 @@ body {
   <button onclick="openEnvelope()" class="invite-btn">
   <div class="envelope-wrapper">
     <img src="Picsart_26-04-26_20-19-04-859.png" class="open_invite">
-    <div class="seal-wrapper">
-      <img src="Seal.png" class="seal-img">
-      <span class="seal-text">OPEN</span>
-    </div>
+   <div class="seal-wrapper">
+  <img src="Seal.png" class="seal-img seal-left">
+  <img src="Seal.png" class="seal-img seal-right">
+  <span class="seal-text">OPEN</span>
+</div>
   </div>
 </button>
 
