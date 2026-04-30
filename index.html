@@ -67,6 +67,9 @@ section {
   max-width: 400px;
   margin: 15px;
   border: 1px solid rgba(255,255,255,0.2);
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 1px;
+  line-height: 35px;
 }
 
 
@@ -91,10 +94,10 @@ button {
   padding: 12px 25px;
   border-radius: 30px;
   border: none;
-  background: beige;
-  color: #ff4d6d;
   cursor: pointer;
   z-index: 1;
+  background: #341902f2;
+  color: white;
 }
 
 button:hover {
@@ -123,7 +126,7 @@ input {
 .image-section {
   width: 90%;
   /* height: 60vh; */
-  min-height: 60vh;
+  min-height: 45vh;
   /* margin: 30px auto; */
   margin: 0 auto;
   /* padding: 60px 0; */
@@ -401,29 +404,21 @@ position: relative;
 
 .venue-box {
   background: linear-gradient(135deg, #f8f3e8, #efe6d8);
-  color: #6b1d1d;
-
+  color: #341902f2;
   padding: 40px 20px;
-
   width: 100%;
   max-width: 500px;
-
   margin: 0 auto; 
-
   border-radius: 12px;
   border: 2px solid rgba(212,175,55,0.4);
-
   box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-
   text-align: center;
 }
 
 .venue-box h1 {
   font-family: 'Playfair Display', serif;
   font-size: 44px;
-
-  color: #c9a227;
-
+  color: #cfa211;
   text-shadow:
     0 1px 0 #fff3cc,
     0 2px 5px rgba(0,0,0,0.25);
@@ -736,16 +731,53 @@ body {
 
 .event-count {
   max-width: 120%;
+  margin-bottom: -150px;
+  position: relative;
+  right: 10px;
 }
 
 .event-title-img
 {
   max-width: 130%;
+  margin-bottom: -170px;
 }
 
-.event-count,
+/* .event-count,
 .event-title-img {
   margin-bottom: -130px;
+} */
+
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+#attending {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 160px;
+  padding: 10px 35px 10px 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+.arrow-bold {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+
+  color: #cfa211;
+  font-size: 14px;
+}
+
+.card input,
+.card .select-wrapper,
+.card textarea {
+  margin-top: 20px;   /* 🔥 same gap everywhere */
 }
 
 </style>
@@ -834,7 +866,7 @@ body {
 </div>
 
 <section class="fade">
-  <img src="Celebrations.png" class="event-title-img" alt="The Celebrations">
+  <img src="Celebrations.png" class="event-title-img" alt="The Celebrations" style="position: relative;right: 10px;">
 
   <div class="event-container">
 
@@ -878,7 +910,7 @@ body {
 
 <section class="fade">
   <div class="venue-box">
-    <h3>📍 Venue</h3>
+    <h3 style="position: relative;left: -13px;">📍 Venue</h3>
     <h2 style="letter-spacing:3px; margin-bottom:10px;">LOCATION</h2>
 
 <h1 style="font-family: 'Playfair Display'; margin-bottom:15px;">
@@ -893,7 +925,7 @@ body {
    target="_blank"
    style="display:inline-block;
           padding:12px 25px;
-          background:#7a1f1f;
+          background:#341902f2;
           color:white;
           text-decoration:none;
           border-radius:5px;">
@@ -905,27 +937,34 @@ body {
 <section class="fade">
   <div class="card">
       <h3 style="max-width:500px;">
-    "With the blessings of our families, we invite you to celebrate our special day 💖"
+    "We invite you to celebrate our special day"
   </h3>
-    <h2>👨‍👩‍👧 Family</h2>
-    <h3>Koduri Madhava Reddy, Vijaya Lakshmi & Mallikarjun Reddy</h3>
+    <h2 style="color: #cfa211;">👨‍👩‍👧 Family</h2>
+    <h3 class="family-names" style="font-style: italic; letter-spacing: 4px;">
+  Koduri Madhava Reddy<br>
+  Vijaya Lakshmi<br>
+  Mallikarjun Reddy
+</h3>
   </div>
 </section>
 
 <section class="fade">
   <div class="card">
-    <h3>💌 RSVP</h3>
-    <input id="name" placeholder="Your Name"><br><br>
+    <h3 style="font-size: 1.5em;color: #cfa211;">💌 Confirm Your Presence</h3>
+    <input id="name" placeholder="Your Name">
 
-<select id="attending">
-  <option value="">Please select</option>
-  <option value="Yes">Will Attend 😊</option>
-  <option value="No">Not Attending 😔</option>
-</select><br><br>
+<div class="select-wrapper">
+  <select id="attending">
+    <option value="">Please select</option>
+    <option value="Yes">Will Attend 😊</option>
+    <option value="No">Not Attending 😔</option>
+  </select>
+  <span class="arrow-bold">▼</span>
+</div>
 
-<textarea id="comment" placeholder="Message" rows="3"></textarea><br><br>
+<textarea id="comment" placeholder="Message" rows="3" style="padding: 10px;border-radius: 10px;border: none;margin-top: 25px;"></textarea><br><br>
 
-<button onclick="rsvp()">Confirm Your Presence 💖</button>
+<button onclick="rsvp()" style="margin-left: 110px;">Submit</button>
 
 <p id="msg"></p>
   </div>
