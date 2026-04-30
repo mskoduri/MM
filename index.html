@@ -19,8 +19,8 @@ body {
 .bg {
   position: fixed;
   inset: 0;
-  background: url('IMG_20260426_200442.png') no-repeat center;
-  background-size: 420%;
+  background: url('360.jpeg') no-repeat center;
+  background-size: cover;
   filter: brightness(1.05) contrast(1.1);
   z-index: -1;
   pointer-events: none;
@@ -650,8 +650,10 @@ html {
   top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
+  width: 12vw;
+  height: 12vw;
+  max-width: 60px;
+  max-height: 60px;
   z-index: 10;
 }
 
@@ -729,13 +731,18 @@ body {
   box-sizing: border-box;
 }
 
-.event-count {
+/* .event-count {
   margin-bottom: -5em;
 }
 
 .event-title-img
 {
   margin-bottom: -6em;
+} */
+
+.event-count,
+.event-title-img {
+  margin-bottom: -80px;
 }
 
 </style>
