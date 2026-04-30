@@ -28,7 +28,7 @@ body {
     ),
     url('360.webp') no-repeat center; */
   background-size: cover;
-  filter: brightness(1.05) contrast(1.1);
+  filter: brightness(0.9) contrast(1.1);
   z-index: -1;
   pointer-events: none;
 }
@@ -446,16 +446,12 @@ position: relative;
 
 .event-card {
   background: #f8f3e8;
-  color: #6b1d1d;
-
+  color: #341902f2;
   padding: 30px 20px;
   width: 280px;
-
   border: 1px solid #e5d3a3;
   border-radius: 10px;
-
   text-align: center;
-
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
@@ -469,7 +465,7 @@ position: relative;
   margin-top: 15px;
   padding: 12px 25px;
 
-  background: #7a1f1f;
+  background: #341902f2;
   color: white;
 
   border-radius: 6px;
@@ -738,18 +734,18 @@ body {
   box-sizing: border-box;
 }
 
-/* .event-count {
-  margin-bottom: -5em;
+.event-count {
+  max-width: 120%;
 }
 
 .event-title-img
 {
-  margin-bottom: -6em;
-} */
+  max-width: 130%;
+}
 
 .event-count,
 .event-title-img {
-  margin-bottom: -80px;
+  margin-bottom: -130px;
 }
 
 </style>
@@ -796,7 +792,7 @@ body {
       WEDNESDAY, MAY 13, 2026 · 09:24 AM
     </div>
 
-    <p class="footer-text">
+    <p class="footer-text" style="opacity: 0.7;">
       Your presence will make our day truly special
     </p>
 
@@ -811,7 +807,7 @@ body {
 
 <section class="fade">
   <!-- <h2 style="letter-spacing:3px; opacity:0.8;">SAVE THE DATE</h2> -->
-  <img src="Countdown.png" class="event-count" alt="The Countdown">
+  <img src="Countdown.png" class="event-count" alt="The Countdown" >
 
   <div class="countdown-box">
     <div class="time">
